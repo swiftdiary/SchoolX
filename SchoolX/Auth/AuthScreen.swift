@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct AuthScreen: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Welcome!")
+                .font(.title.bold())
+            Button {
+                
+            } label: {
+                Text("Continue with Apple")
+            }
+            Button {
+                
+            } label: {
+                Text("Continue with Google")
+            }
+            Button {
+                
+            } label: {
+                Text("Continue using Email")
+            }
+        }
     }
 }
 
