@@ -28,6 +28,14 @@
 		CAC339B02AD9613600218943 /* SignInGoogleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339AF2AD9613600218943 /* SignInGoogleHelper.swift */; };
 		CAC339B32AD961A200218943 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CAC339B22AD961A200218943 /* GoogleSignIn */; };
 		CAC339B52AD961A200218943 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CAC339B42AD961A200218943 /* GoogleSignInSwift */; };
+		CAC339B82AD96A7500218943 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CAC339B72AD96A7500218943 /* Lottie */; };
+		CAC339BA2AD9720A00218943 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CAC339B92AD9720A00218943 /* FirebaseFirestore */; };
+		CAC339BC2AD9720A00218943 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CAC339BB2AD9720A00218943 /* FirebaseFirestoreSwift */; };
+		CAC339BF2AD9750A00218943 /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339BE2AD9750A00218943 /* LottieAnimation.swift */; };
+		CAC339C12AD975DB00218943 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = CAC339C02AD975DB00218943 /* success.json */; };
+		CAC339C42AD97C4E00218943 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339C32AD97C4E00218943 /* AppNavigation.swift */; };
+		CAC339C62AD97C7E00218943 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339C52AD97C7E00218943 /* SplashScreen.swift */; };
+		CAC339C92AD97F7A00218943 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339C82AD97F7A00218943 /* HomeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +53,11 @@
 		CAC339AA2AD9601F00218943 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		CAC339AD2AD9606F00218943 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CAC339AF2AD9613600218943 /* SignInGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInGoogleHelper.swift; sourceTree = "<group>"; };
+		CAC339BE2AD9750A00218943 /* LottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
+		CAC339C02AD975DB00218943 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		CAC339C32AD97C4E00218943 /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
+		CAC339C52AD97C7E00218943 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		CAC339C82AD97F7A00218943 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +67,10 @@
 			files = (
 				CAC3399A2AD953D400218943 /* FirebaseAnalyticsSwift in Frameworks */,
 				CAC339A52AD95DEA00218943 /* FirebaseAuth in Frameworks */,
+				CAC339B82AD96A7500218943 /* Lottie in Frameworks */,
+				CAC339BA2AD9720A00218943 /* FirebaseFirestore in Frameworks */,
 				CAC339962AD953D400218943 /* FirebaseAnalytics in Frameworks */,
+				CAC339BC2AD9720A00218943 /* FirebaseFirestoreSwift in Frameworks */,
 				CAC339B52AD961A200218943 /* GoogleSignInSwift in Frameworks */,
 				CAC339982AD953D400218943 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				CAC3399E2AD953D400218943 /* FirebaseAppCheck in Frameworks */,
@@ -88,9 +104,12 @@
 			children = (
 				CAC339812AD946A400218943 /* SchoolXApp.swift */,
 				CAC339832AD946A400218943 /* ContentView.swift */,
-				CAC339A82AD95E6300218943 /* Utils.swift */,
+				CAC339C52AD97C7E00218943 /* SplashScreen.swift */,
+				CAC339C22AD97C3200218943 /* Utils */,
+				CAC339BD2AD974FC00218943 /* Lottie */,
 				CAC339AC2AD9606000218943 /* User */,
 				CAC3398F2AD9515A00218943 /* Auth */,
+				CAC339C72AD97F7100218943 /* Home */,
 				CAC339852AD946A500218943 /* Assets.xcassets */,
 				CAC339922AD9536800218943 /* GoogleService-Info.plist */,
 				CAC339872AD946A500218943 /* Preview Content */,
@@ -134,6 +153,32 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		CAC339BD2AD974FC00218943 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				CAC339BE2AD9750A00218943 /* LottieAnimation.swift */,
+				CAC339C02AD975DB00218943 /* success.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		CAC339C22AD97C3200218943 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CAC339A82AD95E6300218943 /* Utils.swift */,
+				CAC339C32AD97C4E00218943 /* AppNavigation.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CAC339C72AD97F7100218943 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CAC339C82AD97F7A00218943 /* HomeScreen.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,6 +204,9 @@
 				CAC339A42AD95DEA00218943 /* FirebaseAuth */,
 				CAC339B22AD961A200218943 /* GoogleSignIn */,
 				CAC339B42AD961A200218943 /* GoogleSignInSwift */,
+				CAC339B72AD96A7500218943 /* Lottie */,
+				CAC339B92AD9720A00218943 /* FirebaseFirestore */,
+				CAC339BB2AD9720A00218943 /* FirebaseFirestoreSwift */,
 			);
 			productName = SchoolX;
 			productReference = CAC3397E2AD946A400218943 /* SchoolX.app */;
@@ -191,6 +239,7 @@
 			packageReferences = (
 				CAC339942AD953D400218943 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CAC339B12AD961A200218943 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				CAC339B62AD96A7500218943 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = CAC3397F2AD946A400218943 /* Products */;
 			projectDirPath = "";
@@ -208,6 +257,7 @@
 			files = (
 				CAC339892AD946A500218943 /* Preview Assets.xcassets in Resources */,
 				CAC339862AD946A500218943 /* Assets.xcassets in Resources */,
+				CAC339C12AD975DB00218943 /* success.json in Resources */,
 				CAC339932AD9536800218943 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,10 +271,14 @@
 			files = (
 				CAC339B02AD9613600218943 /* SignInGoogleHelper.swift in Sources */,
 				CAC339842AD946A400218943 /* ContentView.swift in Sources */,
+				CAC339C92AD97F7A00218943 /* HomeScreen.swift in Sources */,
 				CAC339822AD946A400218943 /* SchoolXApp.swift in Sources */,
+				CAC339C42AD97C4E00218943 /* AppNavigation.swift in Sources */,
 				CAC339A72AD95E5300218943 /* SignInAppleHelper.swift in Sources */,
 				CAC339A92AD95E6300218943 /* Utils.swift in Sources */,
 				CAC339AB2AD9601F00218943 /* AuthenticationViewModel.swift in Sources */,
+				CAC339C62AD97C7E00218943 /* SplashScreen.swift in Sources */,
+				CAC339BF2AD9750A00218943 /* LottieAnimation.swift in Sources */,
 				CAC339AE2AD9606F00218943 /* User.swift in Sources */,
 				CAC339A02AD95C3300218943 /* AuthEmailScreen.swift in Sources */,
 				CAC339912AD9518A00218943 /* AuthScreen.swift in Sources */,
@@ -452,6 +506,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		CAC339B62AD96A7500218943 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -494,6 +556,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CAC339B12AD961A200218943 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		CAC339B72AD96A7500218943 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAC339B62AD96A7500218943 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		CAC339B92AD9720A00218943 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAC339942AD953D400218943 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		CAC339BB2AD9720A00218943 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAC339942AD953D400218943 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

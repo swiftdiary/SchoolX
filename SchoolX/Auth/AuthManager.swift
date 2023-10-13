@@ -11,12 +11,12 @@ import FirebaseAuth
 struct AuthDataResultModel {
     let uid: String
     let email: String?
-    let isAnonymous: Bool
+    let name: String?
     
     init(user: User) {
         self.uid = user.uid
         self.email = user.email
-        self.isAnonymous = user.isAnonymous
+        self.name = user.displayName
     }
 }
 
