@@ -43,6 +43,14 @@ struct AuthEmailScreen: View {
                 .padding(.horizontal, 5)
                 .padding(.vertical, 10)
                 .padding(.top, 30)
+                .onAppear {
+                    UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.accentColor)
+                    UISegmentedControl.appearance().backgroundColor = .white
+                    let colors: [NSAttributedString.Key: Any] = [
+                        .foregroundColor : UIColor.white
+                    ]
+                    UISegmentedControl.appearance().setTitleTextAttributes(colors, for: .selected)
+                }
             
             VStack {
                 ZStack {
