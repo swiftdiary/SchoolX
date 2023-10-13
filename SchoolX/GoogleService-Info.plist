@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyC5IoW01ZBI40odG7kC6TYdQafWLQ0M5XQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>485448578420</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.swiftdiary.SchoolX</string>
+	<key>PROJECT_ID</key>
+	<string>school-x-71248</string>
+	<key>STORAGE_BUCKET</key>
+	<string>school-x-71248.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:485448578420:ios:3ef0cc5b8b74af472d6821</string>
+</dict>
+</plist>
