@@ -37,12 +37,13 @@ struct ContentView: View {
                 case .signIn: 
                     AuthScreen()
                         .environmentObject(appNavigation)
+                case .signInWithEmail:
+                    AuthEmailScreen()
+                        .environmentObject(appNavigation)
                 case .home:
                     HomeScreen()
                         .environmentObject(appNavigation)
-                default:
-                    Text("HEHEHEHEH")
-                        .environmentObject(appNavigation)
+                    
                 }
             }
         }
