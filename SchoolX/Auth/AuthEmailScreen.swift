@@ -12,15 +12,19 @@ struct AuthEmailScreen: View {
     @State private var userName: String = ""
     @State private var userEmail: String = ""
     @State private var password: String = ""
+    @State private var isAlertPresented: Bool = false
+    @State private var alertMessage: String = "" { didSet {
+        if !alertMessage.isEmpty {
+            withAnimation(.bouncy) {
+                isAlertPresented = true
+            }
+        }
+    }}
     @EnvironmentObject private var appNavigation: AppNavigation
     @EnvironmentObject private var viewModel: AuthenticationViewModel
     
     var body: some View {
         ZStack {
-            //background
-            
-            
-            //content
             RoundedRectangle(cornerRadius: 25.0)
                 .frame(maxHeight: 600)
                 .padding()
@@ -30,82 +34,97 @@ struct AuthEmailScreen: View {
                 }
                 .animation(.bouncy, value: segmentPickerValue)
         }
+        .alert(alertMessage, isPresented: $isAlertPresented) {
+            Button("Ok") {
+                withAnimation(.bouncy) {
+                    alertMessage = ""
+                }
+            }
+        }
     }
     
     @ViewBuilder func SignInContent() -> some View {
-        VStack {
-            Picker(selection: $segmentPickerValue) {
-                Text("Sign In")
-                    .tag(false)
-                Text("Sign Up")
-                    .tag(true)
-            } label: {}
-                .labelsHidden()
-                .pickerStyle(.segmented)
-                .padding(.horizontal, 5)
-                .padding(.vertical, 10)
-                .padding(.top, 30)
-                .onAppear {
-                    UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.accentColor)
-                    UISegmentedControl.appearance().backgroundColor = .white
-                    let colors: [NSAttributedString.Key: Any] = [
-                        .foregroundColor : UIColor.white
-                    ]
-                    UISegmentedControl.appearance().setTitleTextAttributes(colors, for: .selected)
-                }
-            
+        ScrollView {
             VStack {
-                ZStack {
-                    Text("Sign In")
-                        .opacity(segmentPickerValue ? 0 : 1)
-                        .animation(.spring(duration: 0.1), value: segmentPickerValue)
+                Picker(selection: $segmentPickerValue) {
                     Text("Sign Up")
-                        .opacity(segmentPickerValue ? 1 : 0)
-                        .animation(.spring(duration: 0.1), value: segmentPickerValue)
-                        
-                }
-                .font(.title.bold())
-                .fontDesign(.rounded)
-                .foregroundStyle(Color.accentColor)
-                
-                
-                ZStack {
-                    SignInComponents()
-                        .opacity(segmentPickerValue ? 0 : 1)
-                        .animation(.spring(duration: 0.2), value: segmentPickerValue)
-                
-                    SignUpComponents()
-                        .opacity(segmentPickerValue ? 1 : 0)
-                        .animation(.spring(duration: 0.2), value: segmentPickerValue)
-                }
-                
-                
-                Button(action: {
-                    if segmentPickerValue {
-                        
-//                        withAnimation(.bouncy) {
-//                            appNavigation.path = [.home]
-//                        }
+                        .tag(false)
+                    Text("Sign In")
+                        .tag(true)
+                } label: {}
+                    .labelsHidden()
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 10)
+                    .padding(.top, 30)
+                    .onAppear {
+                        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.accentColor)
+                        UISegmentedControl.appearance().backgroundColor = .white
+                        let colors: [NSAttributedString.Key: Any] = [
+                            .foregroundColor : UIColor.white
+                        ]
+                        UISegmentedControl.appearance().setTitleTextAttributes(colors, for: .selected)
                     }
-                }, label: {
-                    Text(segmentPickerValue ? "Sign Up" : "Sign In")
-                        .animation(.spring(duration: 0.1), value: segmentPickerValue)
-                        .font(.headline)
-                        .foregroundStyle(Color(UIColor.secondarySystemBackground))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
-                        .background(Color.accentColor)
-                        .cornerRadius(20)
-                })
-                .padding(.vertical, 40)
                 
-                
-                
+                VStack {
+                    ZStack {
+                        Text("Sign Up")
+                            .opacity(segmentPickerValue ? 0 : 1)
+                            .animation(.spring(duration: 0.1), value: segmentPickerValue)
+                        Text("Sign In")
+                            .opacity(segmentPickerValue ? 1 : 0)
+                            .animation(.spring(duration: 0.1), value: segmentPickerValue)
+                        
+                    }
+                    .font(.title.bold())
+                    .fontDesign(.rounded)
+                    .foregroundStyle(Color.accentColor)
+                    
+                    
+                    ZStack {
+                        SignInComponents()
+                            .opacity(segmentPickerValue ? 0 : 1)
+                            .animation(.spring(duration: 0.2), value: segmentPickerValue)
+                        
+                        SignUpComponents()
+                            .opacity(segmentPickerValue ? 1 : 0)
+                            .animation(.spring(duration: 0.2), value: segmentPickerValue)
+                    }
+                    
+                    
+                    Button(action: {
+                        Task {
+                            do {
+                                if segmentPickerValue {
+                                    try await viewModel.signInEmail(email: userEmail, password: password)
+                                } else {
+                                    try await viewModel.signUpEmail(email: userEmail, password: password, name: userName)
+                                }
+                            } catch {
+                                alertMessage = Utils.shared.checkPassword(password)
+                            }
+                        }
+                    }, label: {
+                        Text(segmentPickerValue ? "Sign In" : "Sign Up")
+                            .animation(.spring(duration: 0.1), value: segmentPickerValue)
+                            .font(.headline)
+                            .foregroundStyle(Color(UIColor.secondarySystemBackground))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 55)
+                            .background(Color.accentColor)
+                            .cornerRadius(20)
+                    })
+                    .padding(.vertical, 40)
+                    
+                    
+                    
+                }
+                Spacer()
             }
-            Spacer()
+            .animation(.spring(duration: 0.5), value: segmentPickerValue)
+            .padding(30)
         }
-        .animation(.spring(duration: 0.5), value: segmentPickerValue)
-        .padding(30)
+        .scrollDismissesKeyboard(.immediately)
     }
     
     @ViewBuilder func SignUpComponents() -> some View {

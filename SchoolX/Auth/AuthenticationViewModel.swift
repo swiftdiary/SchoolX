@@ -18,23 +18,23 @@ final class AuthenticationViewModel: ObservableObject {
         
     }
     
-    func signInEmail(email: String, password: String) async throws {
+    func signInEmail(email: String, password: String) async throws -> UserModel {
         let authDataResult = try await AuthenticationManager.shared.signInUser(email: email, password: password)
-        let user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+        return try await UserManager.shared.getUser(userId: authDataResult.uid)
     }
     
-    func signInGoogle() async throws {
+    func signInGoogle() async throws -> UserModel {
         let helper = SignInGoogleHelper()
         let tokens = try await helper.signIn()
         let authDataResult = try await AuthenticationManager.shared.signInWithGoogle(tokens: tokens)
-        
+        return try await UserManager.shared.getUser(userId: authDataResult.uid)
     }
     
-    func signInApple() async throws {
+    func signInApple() async throws -> UserModel {
         let helper = SignInAppleHelper()
         let tokens = try await helper.startSignInWithAppleFlow()
         let authDataResult = try await AuthenticationManager.shared.signInWithApple(tokens: tokens)
-        
+        return try await UserManager.shared.getUser(userId: authDataResult.uid)
     }
 
 }
