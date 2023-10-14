@@ -17,6 +17,7 @@
 		CA905F092ADADC8300A285AA /* loading_hamster.json in Resources */ = {isa = PBXBuildFile; fileRef = CA905F082ADADC8300A285AA /* loading_hamster.json */; };
 		CA905F0B2ADADE8300A285AA /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA905F0A2ADADE8300A285AA /* Date+Ext.swift */; };
 		CA905F0D2ADADEF600A285AA /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA905F0C2ADADEF600A285AA /* View+Ext.swift */; };
+		CA905F0F2ADAE29000A285AA /* ProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA905F0E2ADAE29000A285AA /* ProgressViewModel.swift */; };
 		CAC339822AD946A400218943 /* SchoolXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339812AD946A400218943 /* SchoolXApp.swift */; };
 		CAC339842AD946A400218943 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339832AD946A400218943 /* ContentView.swift */; };
 		CAC339862AD946A500218943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAC339852AD946A500218943 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		CA905F082ADADC8300A285AA /* loading_hamster.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_hamster.json; sourceTree = "<group>"; };
 		CA905F0A2ADADE8300A285AA /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		CA905F0C2ADADEF600A285AA /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		CA905F0E2ADAE29000A285AA /* ProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewModel.swift; sourceTree = "<group>"; };
 		CAC3397E2AD946A400218943 /* SchoolX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC339812AD946A400218943 /* SchoolXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolXApp.swift; sourceTree = "<group>"; };
 		CAC339832AD946A400218943 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				CAC9B2502ADA78F90095DCA9 /* ProgressScreen.swift */,
 				CA905F032ADABF0D00A285AA /* Progress.swift */,
+				CA905F0E2ADAE29000A285AA /* ProgressViewModel.swift */,
 			);
 			path = Progress;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				CAC339C92AD97F7A00218943 /* HomeScreen.swift in Sources */,
 				CAC339822AD946A400218943 /* SchoolXApp.swift in Sources */,
 				CAC339C42AD97C4E00218943 /* AppNavigation.swift in Sources */,
+				CA905F0F2ADAE29000A285AA /* ProgressViewModel.swift in Sources */,
 				CA905F042ADABF0D00A285AA /* Progress.swift in Sources */,
 				CAC339A72AD95E5300218943 /* SignInAppleHelper.swift in Sources */,
 				CAC339A92AD95E6300218943 /* Utils.swift in Sources */,
