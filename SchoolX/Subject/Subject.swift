@@ -28,6 +28,11 @@ struct Slide: Codable, Hashable {
     let title: String
     let description: String
     // 3d Model
+    enum CodingKeys: String, CodingKey {
+        case imageUrl = "image_url"
+        case title = "title"
+        case description = "description"
+    }
 }
 
 struct Topic: Identifiable, Codable, Equatable, Hashable {

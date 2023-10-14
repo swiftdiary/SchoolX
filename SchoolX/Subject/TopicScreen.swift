@@ -10,8 +10,8 @@ import SwiftUI
 struct TopicScreen: View {
     @StateObject private var viewModel: TopicViewModel = TopicViewModel()
     @EnvironmentObject private var appNavigation: AppNavigation
-    
     let subjectType: SubjectType
+    
     var body: some View {
         List {
             ForEach(viewModel.topics) { topic in
@@ -23,6 +23,13 @@ struct TopicScreen: View {
                 }
             }
         }
+        .task(priority: .high, {
+            do {
+                try await viewModel.getTopics(with: subjectType)
+            } catch {
+                print(error)
+            }
+        })
         .listStyle(.grouped)
     }
 }

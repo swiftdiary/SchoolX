@@ -14,7 +14,7 @@ struct SubjectScreen: View {
         List {
             ForEach(SubjectType.allCases) { c in
                 HStack {
-                    Text("EFEFEF")
+                    Text("Subject \(c.rawValue)")
                 }
                 .frame(height: 100)
                 .onTapGesture {
