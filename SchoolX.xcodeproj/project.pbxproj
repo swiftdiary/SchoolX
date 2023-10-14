@@ -46,6 +46,9 @@
 		CAC9B24F2ADA78E60095DCA9 /* SubjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B24E2ADA78E60095DCA9 /* SubjectScreen.swift */; };
 		CAC9B2512ADA78F90095DCA9 /* ProgressScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B2502ADA78F90095DCA9 /* ProgressScreen.swift */; };
 		CAC9B2532ADA8FFB0095DCA9 /* EditNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B2522ADA8FFB0095DCA9 /* EditNameScreen.swift */; };
+		D52CB4D82ADAEFC5005BE113 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB4D72ADAEFC5005BE113 /* ImageCacher.swift */; };
+		D52CB4DA2ADAF012005BE113 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB4D92ADAF012005BE113 /* CacheManager.swift */; };
+		D54AF4622ADB24E9005FBB34 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54AF4612ADB24E9005FBB34 /* Font+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +83,9 @@
 		CAC9B24E2ADA78E60095DCA9 /* SubjectScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectScreen.swift; sourceTree = "<group>"; };
 		CAC9B2502ADA78F90095DCA9 /* ProgressScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressScreen.swift; sourceTree = "<group>"; };
 		CAC9B2522ADA8FFB0095DCA9 /* EditNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameScreen.swift; sourceTree = "<group>"; };
+		D52CB4D72ADAEFC5005BE113 /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
+		D52CB4D92ADAF012005BE113 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		D54AF4612ADB24E9005FBB34 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +202,9 @@
 			children = (
 				CAC339A82AD95E6300218943 /* Utils.swift */,
 				CAC339C32AD97C4E00218943 /* AppNavigation.swift */,
+				D52CB4D72ADAEFC5005BE113 /* ImageCacher.swift */,
+				D52CB4D92ADAF012005BE113 /* CacheManager.swift */,
+				D54AF4612ADB24E9005FBB34 /* Font+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -327,8 +336,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D52CB4DA2ADAF012005BE113 /* CacheManager.swift in Sources */,
 				CAC339B02AD9613600218943 /* SignInGoogleHelper.swift in Sources */,
 				CA905EFE2ADAB47800A285AA /* TopicViewModel.swift in Sources */,
+				D52CB4D82ADAEFC5005BE113 /* ImageCacher.swift in Sources */,
 				CAC339842AD946A400218943 /* ContentView.swift in Sources */,
 				CAC339C92AD97F7A00218943 /* HomeScreen.swift in Sources */,
 				CAC339822AD946A400218943 /* SchoolXApp.swift in Sources */,
@@ -346,6 +357,7 @@
 				CAC339912AD9518A00218943 /* AuthScreen.swift in Sources */,
 				CA905EF82ADAA96700A285AA /* SubjectViewModel.swift in Sources */,
 				CAC9B2532ADA8FFB0095DCA9 /* EditNameScreen.swift in Sources */,
+				D54AF4622ADB24E9005FBB34 /* Font+.swift in Sources */,
 				CAC9B2492ADA77510095DCA9 /* TabBarView.swift in Sources */,
 				CA905EF62ADA9F5F00A285AA /* Subject.swift in Sources */,
 				CAC9B24F2ADA78E60095DCA9 /* SubjectScreen.swift in Sources */,
