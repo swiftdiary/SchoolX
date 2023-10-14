@@ -40,7 +40,7 @@ struct AuthScreen: View {
                         }
                     }
                 }, label: {
-                    SignInWithAppleButtonViewRepresentable(type: .default, style: .black)
+                    SignInWithAppleButtonViewRepresentable(type: .continue, style: .black)
                         .allowsHitTesting(false)
                 })
                 .frame(height: 55)

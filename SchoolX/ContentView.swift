@@ -18,9 +18,13 @@ struct ContentView: View {
                     .onAppear {
                         do {
                             let _ = try AuthenticationManager.shared.getAuthenticatedUser()
-                            isSignedIn = true
+                            withAnimation(.bouncy) {
+                                isSignedIn = true
+                            }
                         } catch {
-                            isSignedIn = false
+                            withAnimation(.bouncy) {
+                                isSignedIn = false
+                            }
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             if isSignedIn {
