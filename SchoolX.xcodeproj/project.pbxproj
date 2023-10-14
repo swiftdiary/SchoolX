@@ -108,6 +108,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA905F072ADAD25E00A285AA /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Badges;
+			sourceTree = "<group>";
+		};
 		CAC339752AD946A400218943 = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +199,7 @@
 				CAC339BE2AD9750A00218943 /* LottieAnimation.swift */,
 				CA905F052ADAC87000A285AA /* loading.json */,
 				CAC339C02AD975DB00218943 /* success.json */,
+				CA905F072ADAD25E00A285AA /* Badges */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";

@@ -14,6 +14,7 @@ struct UserModel: Codable {
     let email: String?
     let dateCreated: Date?
     var name: String?
+    var progress: Progress?
     
     init(auth: AuthDataResultModel) {
         self.userId = auth.uid
@@ -27,6 +28,7 @@ struct UserModel: Codable {
         case email = "email"
         case dateCreated = "date_created"
         case name = "name"
+        case progress = "progress"
     }
     
 }
