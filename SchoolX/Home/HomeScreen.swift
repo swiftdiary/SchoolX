@@ -11,7 +11,7 @@ struct HomeScreen: View {
     
     var body: some View {
         VStack {
-            Text("Hello, World!")
+            Text("Home")
         }
         .toolbar(.hidden, for: .navigationBar)
     }

@@ -55,7 +55,7 @@ struct ContentView: View {
                         .environmentObject(appNavigation)
                         .environmentObject(viewModel)
                 case .home:
-                    HomeScreen()
+                    TabBarView()
                         .environmentObject(appNavigation)
                         .environmentObject(viewModel)
                 }
