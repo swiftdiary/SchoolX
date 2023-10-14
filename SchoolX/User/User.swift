@@ -70,4 +70,11 @@ final class UserManager {
         try await userDocument(userId: userId).updateData(data)
     }
     
+    func updateUserProgress(userId: String, progress: Progress) async throws {
+        let data: [ String : Any ] = [
+            UserModel.CodingKeys.progress.rawValue : try encoder.encode(progress)
+        ]
+        try await userDocument(userId: userId).updateData(data)
+    }
+    
 }
