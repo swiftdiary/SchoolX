@@ -21,6 +21,14 @@ struct UserModel: Codable {
         self.dateCreated = Date()
         self.name = auth.name
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case userId = "user_id"
+        case email = "email"
+        case dateCreated = "date_created"
+        case name = "name"
+    }
+    
 }
 
 final class UserManager {
@@ -53,6 +61,11 @@ final class UserManager {
         try await userDocument(userId: userId).getDocument(as: UserModel.self)
     }
     
-    
+    func updateUserName(userId: String, name: String) async throws {
+        let data: [ String: Any ] = [
+            UserModel.CodingKeys.name.rawValue : name
+        ]
+        try await userDocument(userId: userId).updateData(data)
+    }
     
 }

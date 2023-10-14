@@ -58,6 +58,10 @@ struct ContentView: View {
                     TabBarView()
                         .environmentObject(appNavigation)
                         .environmentObject(viewModel)
+                case .profile_editName:
+                    EditNameScreen()
+                        .environmentObject(appNavigation)
+                        .environmentObject(viewModel)
                 }
             }
         }

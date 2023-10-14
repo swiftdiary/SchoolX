@@ -40,6 +40,7 @@
 		CAC9B24D2ADA78C40095DCA9 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B24C2ADA78C40095DCA9 /* ProfileScreen.swift */; };
 		CAC9B24F2ADA78E60095DCA9 /* SubjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B24E2ADA78E60095DCA9 /* SubjectScreen.swift */; };
 		CAC9B2512ADA78F90095DCA9 /* ProgressScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B2502ADA78F90095DCA9 /* ProgressScreen.swift */; };
+		CAC9B2532ADA8FFB0095DCA9 /* EditNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B2522ADA8FFB0095DCA9 /* EditNameScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		CAC9B24C2ADA78C40095DCA9 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		CAC9B24E2ADA78E60095DCA9 /* SubjectScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectScreen.swift; sourceTree = "<group>"; };
 		CAC9B2502ADA78F90095DCA9 /* ProgressScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressScreen.swift; sourceTree = "<group>"; };
+		CAC9B2522ADA8FFB0095DCA9 /* EditNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			children = (
 				CAC339AD2AD9606F00218943 /* User.swift */,
 				CAC9B24C2ADA78C40095DCA9 /* ProfileScreen.swift */,
+				CAC9B2522ADA8FFB0095DCA9 /* EditNameScreen.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				CAC339AE2AD9606F00218943 /* User.swift in Sources */,
 				CAC339A02AD95C3300218943 /* AuthEmailScreen.swift in Sources */,
 				CAC339912AD9518A00218943 /* AuthScreen.swift in Sources */,
+				CAC9B2532ADA8FFB0095DCA9 /* EditNameScreen.swift in Sources */,
 				CAC9B2492ADA77510095DCA9 /* TabBarView.swift in Sources */,
 				CAC9B24F2ADA78E60095DCA9 /* SubjectScreen.swift in Sources */,
 				CAC339A22AD95DD800218943 /* AuthManager.swift in Sources */,
