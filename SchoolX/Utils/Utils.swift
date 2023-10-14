@@ -30,4 +30,33 @@ class Utils {
         return controller
     }
     
+    func checkPassword(_ password: String) -> String {
+        if password.count < 8 {
+            return "Password should contain more than 8 digits!!"
+        } else if !stringHasNumber(password) {
+            return "Password should contain numbers!!"
+        } else if !stringHasUpperCased(password) {
+            return "Password should contain Uppercased letters!!!"
+        }
+        return ""
+    }
+    
+    func stringHasNumber(_ string:String) -> Bool {
+        for character in string{
+            if character.isNumber{
+                return true
+            }
+        }
+        return false
+    }
+    
+    func stringHasUpperCased(_ string:String) -> Bool {
+        for character in string{
+            if character.isUppercase{
+                return true
+            }
+        }
+        return false
+    }
+    
 }
