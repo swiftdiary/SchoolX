@@ -17,19 +17,25 @@ struct ProgressScreen: View {
     }
     var body: some View {
         VStack {
-            Text("User: ")
             if let user {
                 Text(user.name ?? "feef")
                 Text(user.email ?? "@@@")
                 Text("Progress")
                 Text("\(user.progress?.milestone.estimatedCount ?? 1)")
+            } else {
+                VStack {
+                    LottieView(name: "loading_hamster")
+                        .frame(maxHeight: 400)
+                    Text("Loading...")
+                        .font(.headline)
+                        .foregroundStyle(.accent)
+                }
             }
         }
-        .task {
+        .task(priority: .high) {
             do {
                 let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
                 user = try await UserManager.shared.getUser(userId: authDataResult.uid)
-                try await UserManager.shared.updateUserProgress(userId: authDataResult.uid, progress: fakeProgress)
             } catch {
                 print(error)
             }
