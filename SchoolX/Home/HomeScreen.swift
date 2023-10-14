@@ -11,9 +11,12 @@ struct HomeScreen: View {
     
     var body: some View {
         VStack {
-            Text("Home")
+            ScrollView {
+                TabBarPreviewMode()
+            }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .navigationTitle("Discover")
     }
 }
 

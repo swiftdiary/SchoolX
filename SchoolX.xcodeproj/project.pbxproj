@@ -40,6 +40,8 @@
 		CAC9B24D2ADA78C40095DCA9 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B24C2ADA78C40095DCA9 /* ProfileScreen.swift */; };
 		CAC9B24F2ADA78E60095DCA9 /* SubjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B24E2ADA78E60095DCA9 /* SubjectScreen.swift */; };
 		CAC9B2512ADA78F90095DCA9 /* ProgressScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC9B2502ADA78F90095DCA9 /* ProgressScreen.swift */; };
+		D52B1B5D2ADA8748003F4F47 /* TabBarPreviewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52B1B5C2ADA8748003F4F47 /* TabBarPreviewMode.swift */; };
+		D52B1B622ADA8AAB003F4F47 /* TopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52B1B612ADA8AAB003F4F47 /* TopicModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		CAC9B24C2ADA78C40095DCA9 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		CAC9B24E2ADA78E60095DCA9 /* SubjectScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectScreen.swift; sourceTree = "<group>"; };
 		CAC9B2502ADA78F90095DCA9 /* ProgressScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressScreen.swift; sourceTree = "<group>"; };
+		D52B1B5C2ADA8748003F4F47 /* TabBarPreviewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPreviewMode.swift; sourceTree = "<group>"; };
+		D52B1B612ADA8AAB003F4F47 /* TopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				CAC339C22AD97C3200218943 /* Utils */,
 				CAC339BD2AD974FC00218943 /* Lottie */,
 				CAC3398F2AD9515A00218943 /* Auth */,
+				D52B1B5E2ADA8A3F003F4F47 /* Models */,
 				CAC339C72AD97F7100218943 /* Home */,
 				CAC9B24A2ADA78640095DCA9 /* Subject */,
 				CAC9B24B2ADA786F0095DCA9 /* Progress */,
@@ -191,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				CAC339C82AD97F7A00218943 /* HomeScreen.swift */,
+				D52B1B5C2ADA8748003F4F47 /* TabBarPreviewMode.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -217,6 +223,14 @@
 				CAC9B2502ADA78F90095DCA9 /* ProgressScreen.swift */,
 			);
 			path = Progress;
+			sourceTree = "<group>";
+		};
+		D52B1B5E2ADA8A3F003F4F47 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D52B1B612ADA8AAB003F4F47 /* TopicModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAC339B02AD9613600218943 /* SignInGoogleHelper.swift in Sources */,
+				D52B1B5D2ADA8748003F4F47 /* TabBarPreviewMode.swift in Sources */,
 				CAC339842AD946A400218943 /* ContentView.swift in Sources */,
 				CAC339C92AD97F7A00218943 /* HomeScreen.swift in Sources */,
 				CAC339822AD946A400218943 /* SchoolXApp.swift in Sources */,
@@ -323,6 +338,7 @@
 				CAC339AE2AD9606F00218943 /* User.swift in Sources */,
 				CAC339A02AD95C3300218943 /* AuthEmailScreen.swift in Sources */,
 				CAC339912AD9518A00218943 /* AuthScreen.swift in Sources */,
+				D52B1B622ADA8AAB003F4F47 /* TopicModel.swift in Sources */,
 				CAC9B2492ADA77510095DCA9 /* TabBarView.swift in Sources */,
 				CAC9B24F2ADA78E60095DCA9 /* SubjectScreen.swift in Sources */,
 				CAC339A22AD95DD800218943 /* AuthManager.swift in Sources */,

@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+
+
+
+struct TopicModel: Codable {
+    var id: String
+    var title: String
+}
