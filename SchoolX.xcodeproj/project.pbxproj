@@ -12,7 +12,6 @@
 		CAC339862AD946A500218943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAC339852AD946A500218943 /* Assets.xcassets */; };
 		CAC339892AD946A500218943 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAC339882AD946A500218943 /* Preview Assets.xcassets */; };
 		CAC339912AD9518A00218943 /* AuthScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339902AD9518A00218943 /* AuthScreen.swift */; };
-		CAC339932AD9536800218943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAC339922AD9536800218943 /* GoogleService-Info.plist */; };
 		CAC339962AD953D400218943 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CAC339952AD953D400218943 /* FirebaseAnalytics */; };
 		CAC339982AD953D400218943 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = CAC339972AD953D400218943 /* FirebaseAnalyticsOnDeviceConversion */; };
 		CAC3399A2AD953D400218943 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CAC339992AD953D400218943 /* FirebaseAnalyticsSwift */; };
@@ -36,6 +35,7 @@
 		CAC339C42AD97C4E00218943 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339C32AD97C4E00218943 /* AppNavigation.swift */; };
 		CAC339C62AD97C7E00218943 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339C52AD97C7E00218943 /* SplashScreen.swift */; };
 		CAC339C92AD97F7A00218943 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC339C82AD97F7A00218943 /* HomeScreen.swift */; };
+		CAC339CD2ADA56CA00218943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAC339CC2ADA56CA00218943 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,6 @@
 		CAC339852AD946A500218943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAC339882AD946A500218943 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CAC339902AD9518A00218943 /* AuthScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreen.swift; sourceTree = "<group>"; };
-		CAC339922AD9536800218943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAC3399F2AD95C3300218943 /* AuthEmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEmailScreen.swift; sourceTree = "<group>"; };
 		CAC339A12AD95DD800218943 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		CAC339A62AD95E5300218943 /* SignInAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleHelper.swift; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		CAC339C32AD97C4E00218943 /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
 		CAC339C52AD97C7E00218943 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		CAC339C82AD97F7A00218943 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		CAC339CC2ADA56CA00218943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +111,7 @@
 				CAC3398F2AD9515A00218943 /* Auth */,
 				CAC339C72AD97F7100218943 /* Home */,
 				CAC339852AD946A500218943 /* Assets.xcassets */,
-				CAC339922AD9536800218943 /* GoogleService-Info.plist */,
+				CAC339CC2ADA56CA00218943 /* GoogleService-Info.plist */,
 				CAC339872AD946A500218943 /* Preview Content */,
 			);
 			path = SchoolX;
@@ -256,9 +256,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAC339892AD946A500218943 /* Preview Assets.xcassets in Resources */,
+				CAC339CD2ADA56CA00218943 /* GoogleService-Info.plist in Resources */,
 				CAC339862AD946A500218943 /* Assets.xcassets in Resources */,
 				CAC339C12AD975DB00218943 /* success.json in Resources */,
-				CAC339932AD9536800218943 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +429,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swiftdiary.SchoolX;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.swiftdiary.School-X";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -458,7 +458,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swiftdiary.SchoolX;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.swiftdiary.School-X";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
