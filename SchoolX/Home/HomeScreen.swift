@@ -13,6 +13,7 @@ struct HomeScreen: View {
         VStack {
             Text("Hello, World!")
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 

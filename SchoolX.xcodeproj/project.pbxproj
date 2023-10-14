@@ -59,6 +59,7 @@
 		CAC339C82AD97F7A00218943 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		CAC339CE2ADA589900218943 /* SchoolX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SchoolX.entitlements; sourceTree = "<group>"; };
 		CAC339CF2ADA5E3F00218943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CAC339D12ADA610E00218943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +104,7 @@
 		CAC339802AD946A400218943 /* SchoolX */ = {
 			isa = PBXGroup;
 			children = (
+				CAC339D12ADA610E00218943 /* Info.plist */,
 				CAC339CE2ADA589900218943 /* SchoolX.entitlements */,
 				CAC339812AD946A400218943 /* SchoolXApp.swift */,
 				CAC339832AD946A400218943 /* ContentView.swift */,
@@ -422,6 +424,7 @@
 				DEVELOPMENT_TEAM = F3SX4NC8FR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SchoolX/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -452,6 +455,7 @@
 				DEVELOPMENT_TEAM = F3SX4NC8FR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SchoolX/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

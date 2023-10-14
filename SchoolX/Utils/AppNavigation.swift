@@ -15,6 +15,5 @@ enum AppNavigationPath {
 
 final class AppNavigation: ObservableObject {
     @Published var path: [AppNavigationPath] = []
-    @Published var isSignedIn: Bool = false
     
 }

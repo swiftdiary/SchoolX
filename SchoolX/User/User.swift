@@ -13,7 +13,7 @@ struct UserModel: Codable {
     let userId: String
     let email: String?
     let dateCreated: Date?
-    let name: String?
+    var name: String?
     
     init(auth: AuthDataResultModel) {
         self.userId = auth.uid

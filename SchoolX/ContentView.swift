@@ -9,13 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var appNavigation = AppNavigation()
+    @StateObject private var viewModel = AuthenticationViewModel()
+    @AppStorage("isSignedIn") private var isSignedIn: Bool = false
     var body: some View {
         NavigationStack(path: $appNavigation.path) {
             VStack {
                 SplashScreen()
                     .onAppear {
+                        do {
+                            let _ = try AuthenticationManager.shared.getAuthenticatedUser()
+                            isSignedIn = true
+                        } catch {
+                            isSignedIn = false
+                        }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            if appNavigation.isSignedIn {
+                            if isSignedIn {
                                 withAnimation(.bouncy) {
                                     appNavigation.path.append(.home)
                                 }
@@ -29,7 +37,7 @@ struct ContentView: View {
             }
             .onAppear(perform: {
                 let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
-                appNavigation.isSignedIn = authUser != nil
+                isSignedIn = authUser != nil
                 
             })
             .navigationDestination(for: AppNavigationPath.self) { value in
@@ -37,13 +45,15 @@ struct ContentView: View {
                 case .signIn: 
                     AuthScreen()
                         .environmentObject(appNavigation)
+                        .environmentObject(viewModel)
                 case .signInWithEmail:
                     AuthEmailScreen()
                         .environmentObject(appNavigation)
+                        .environmentObject(viewModel)
                 case .home:
                     HomeScreen()
                         .environmentObject(appNavigation)
-                    
+                        .environmentObject(viewModel)
                 }
             }
         }

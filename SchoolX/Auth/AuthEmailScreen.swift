@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct AuthEmailScreen: View {
-    @State var segmentPickerValue: Bool = false
-    @State var userName: String = ""
-    @State var userEmail: String = ""
-    @State var password: String = ""
+    @State private var segmentPickerValue: Bool = false
+    @State private var userName: String = ""
+    @State private var userEmail: String = ""
+    @State private var password: String = ""
+    @EnvironmentObject private var appNavigation: AppNavigation
+    @EnvironmentObject private var viewModel: AuthenticationViewModel
     
     var body: some View {
         ZStack {
@@ -79,7 +81,12 @@ struct AuthEmailScreen: View {
                 
                 
                 Button(action: {
-                    
+                    if segmentPickerValue {
+                        
+//                        withAnimation(.bouncy) {
+//                            appNavigation.path = [.home]
+//                        }
+                    }
                 }, label: {
                     Text(segmentPickerValue ? "Sign Up" : "Sign In")
                         .animation(.spring(duration: 0.1), value: segmentPickerValue)

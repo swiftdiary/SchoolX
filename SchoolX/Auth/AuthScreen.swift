@@ -11,7 +11,8 @@ import GoogleSignInSwift
 import AuthenticationServices
 
 struct AuthScreen: View {
-    @StateObject private var viewModel = AuthenticationViewModel()
+    let authManager = AuthenticationManager.shared
+    @EnvironmentObject private var viewModel: AuthenticationViewModel
     @EnvironmentObject private var appNavigation: AppNavigation
     var body: some View {
         VStack {
@@ -31,7 +32,9 @@ struct AuthScreen: View {
                     Task {
                         do {
                             try await viewModel.signInApple()
-                            
+                            withAnimation(.bouncy) {
+                                appNavigation.path = [.home]
+                            }
                         } catch {
                             print(error)
                         }
@@ -47,7 +50,9 @@ struct AuthScreen: View {
                     Task {
                         do {
                             try await viewModel.signInGoogle()
-                            
+                            withAnimation(.bouncy) {
+                                appNavigation.path = [.home]
+                            }
                         } catch {
                             print(error)
                         }

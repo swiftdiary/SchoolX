@@ -10,6 +10,19 @@ import Foundation
 @MainActor
 final class AuthenticationViewModel: ObservableObject {
         
+    func signUpEmail(email: String, password: String, name: String) async throws {
+        let authDataResult = try await AuthenticationManager.shared.createUser(email: email, password: password)
+        var userModel = UserModel(auth: authDataResult)
+        userModel.name = name
+        try await UserManager.shared.createNewUser(user: userModel)
+        
+    }
+    
+    func signInEmail(email: String, password: String) async throws {
+        let authDataResult = try await AuthenticationManager.shared.signInUser(email: email, password: password)
+        let user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+    }
+    
     func signInGoogle() async throws {
         let helper = SignInGoogleHelper()
         let tokens = try await helper.signIn()
@@ -21,11 +34,6 @@ final class AuthenticationViewModel: ObservableObject {
         let helper = SignInAppleHelper()
         let tokens = try await helper.startSignInWithAppleFlow()
         let authDataResult = try await AuthenticationManager.shared.signInWithApple(tokens: tokens)
-        
-    }
-    
-    func signInAnonymous() async throws {
-        let authDataResult = try await AuthenticationManager.shared.signInAnonymous()
         
     }
 
