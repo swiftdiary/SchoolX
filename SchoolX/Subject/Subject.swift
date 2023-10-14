@@ -23,17 +23,17 @@ enum SubjectType: String, Identifiable, Codable {
     }
 }
 
-struct Slide: Codable {
+struct Slide: Codable, Hashable {
     let imageUrl: String
     let title: String
     let description: String
     // 3d Model
 }
 
-struct Topic: Identifiable, Codable, Hashable {
-//    static func == (lhs: Topic, rhs: Topic) -> Bool {
-//        lhs.id == rhs.id
-//    }
+struct Topic: Identifiable, Codable, Equatable, Hashable {
+    static func == (lhs: Topic, rhs: Topic) -> Bool {
+        lhs.id == rhs.id
+    }
     
     var id: UUID { UUID() }
     let topicId: String
