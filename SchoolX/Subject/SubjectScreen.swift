@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct SubjectScreen: View {
+    @StateObject private var viewModel = SubjectViewModel()
     var body: some View {
-        Text("Subject Screen!")
+        List {
+            ForEach(SubjectType.allCases) { c in
+                Text(c.rawValue.uppercased())
+                    .frame(height: 100)
+            }
+        }
+        .listStyle(.grouped)
     }
 }
 
