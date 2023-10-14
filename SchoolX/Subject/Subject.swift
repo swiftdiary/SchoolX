@@ -98,7 +98,7 @@ final class TopicManager {
     
     func getTopicsFiltered(by subject: SubjectType) async throws -> [Topic] {
         let query = getTopicsQuery(subject: subject)
-        let snapshot = try await topicCollection.getDocuments()
+        let snapshot = try await query.getDocuments()
         return try snapshot.documents.map { snap in
             try snap.data(as: Topic.self)
         }
