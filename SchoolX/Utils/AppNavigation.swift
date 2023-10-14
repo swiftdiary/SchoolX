@@ -12,6 +12,8 @@ enum AppNavigationPath: Hashable {
     case signInWithEmail
     case home
     case profile_editName
+    case subject_topics(SubjectType)
+    case subject_topics_detail(Topic)
 }
 
 enum AppNavigationTab: Hashable {

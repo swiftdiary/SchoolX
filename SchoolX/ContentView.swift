@@ -62,6 +62,14 @@ struct ContentView: View {
                     EditNameScreen()
                         .environmentObject(appNavigation)
                         .environmentObject(viewModel)
+                case .subject_topics(let subjectType):
+                    TopicScreen(subjectType: subjectType)
+                        .environmentObject(appNavigation)
+                        .environmentObject(viewModel)
+                case .subject_topics_detail(let topic):
+                    TopicDetailScreen(topic: topic)
+                        .environmentObject(appNavigation)
+                        .environmentObject(viewModel)
                 }
             }
         }

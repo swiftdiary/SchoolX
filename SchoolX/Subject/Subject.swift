@@ -30,7 +30,11 @@ struct Slide: Codable {
     // 3d Model
 }
 
-struct Topic: Identifiable, Codable {
+struct Topic: Identifiable, Codable, Hashable {
+//    static func == (lhs: Topic, rhs: Topic) -> Bool {
+//        lhs.id == rhs.id
+//    }
+    
     var id: UUID { UUID() }
     let topicId: String
     var subject: SubjectType?

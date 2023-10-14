@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct TopicScreen: View {
+    @StateObject private var viewModel: TopicViewModel = TopicViewModel()
+    @EnvironmentObject private var appNavigation: AppNavigation
+    
+    let subjectType: SubjectType
     var body: some View {
-        Text("Topic!")
+        List {
+            ForEach(viewModel.topics) { topic in
+                HStack {
+                    Text("NAME: \(topic.name)")
+                }
+                .onTapGesture {
+                    appNavigation.path.append(.subject_topics_detail(topic))
+                }
+            }
+        }
+        .listStyle(.grouped)
     }
 }
 
 #Preview {
-    TopicScreen()
+    TopicScreen(subjectType: .astronomy)
 }
