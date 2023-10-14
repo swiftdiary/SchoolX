@@ -96,9 +96,15 @@ struct AuthEmailScreen: View {
                         Task {
                             do {
                                 if segmentPickerValue {
-                                    try await viewModel.signInEmail(email: userEmail, password: password)
+                                    _ = try await viewModel.signInEmail(email: userEmail, password: password)
+                                    withAnimation(.bouncy) {
+                                        appNavigation.path = [.home]
+                                    }
                                 } else {
                                     try await viewModel.signUpEmail(email: userEmail, password: password, name: userName)
+                                    withAnimation(.bouncy) {
+                                        appNavigation.path = [.home]
+                                    }
                                 }
                             } catch {
                                 alertMessage = Utils.shared.checkPassword(password)
