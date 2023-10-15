@@ -66,7 +66,6 @@ struct ProgressScreen: View {
                 withAnimation(.bouncy) {
                     let divResult = CGFloat(Float(viewModel.getUserOpenedTimes()) / Float(viewModel.getUserDailyProgressCount()))
                     completeFloat = divResult > 1 ? 1 : divResult
-                    print(completeFloat)
                 }
             }
         }
@@ -125,7 +124,7 @@ struct ProgressScreen: View {
                                 .transition(.move(edge: .leading))
                         }
                         HStack {
-                            Text("\(String(format: "%.0f", completeFloat*100))% complete")
+                            Text("\(String(format: "%.0f", completeFloat*100))% complete today")
                                 .font(.headline.bold())
                                 .foregroundStyle(.accent)
                         }

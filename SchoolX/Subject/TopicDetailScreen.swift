@@ -76,22 +76,36 @@ struct TopicDetailScreen: View {
                         .cornerRadius(10)
                         .padding()
                     
-                    Button(action: {
-                        appNavigation.path.append(.slide_views(topic))
-                    }, label: {
-                        Text("Start Learning")
+                    if (topic.slides ?? []).count != 0 {
+                        Button(action: {
+                            appNavigation.path.append(.slide_views(topic))
+                        }, label: {
+                            Text("Start Learning")
+                                .font(.title.bold())
+                                .fontDesign(.rounded)
+                                .frame(height: 75)
+                                .frame(maxWidth: .infinity)
+                                .foregroundStyle(.white)
+                                .background(
+                                    Color.accentColor
+                                )
+                                .cornerRadius(20)
+                                .padding(.horizontal)
+                            
+                        })
+                    } else {
+                        Text("Coming soon")
                             .font(.title.bold())
                             .fontDesign(.rounded)
                             .frame(height: 75)
                             .frame(maxWidth: .infinity)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.black)
                             .background(
-                                Color.accentColor
+                                Color.accentColor.opacity(0.3)
                             )
                             .cornerRadius(20)
                             .padding(.horizontal)
-                        
-                    })
+                    }
                 }
             }
             .padding(.top, -50)

@@ -16,12 +16,21 @@ struct ARScreen: View {
                     .fill(.white)
                     .frame(height: 100)
                     .overlay(content: {
-                        Button {
-                            ARManager.shared.actionStream.send(.placeBlock(color: .blue))
-                        } label: {
-                            Text("Add Earth")
+                        HStack {
+                            Button {
+                                ARManager.shared.actionStream.send(.placeBlock(color: .blue))
+                            } label: {
+                                Text("Add Earth")
+                            }
+                            .buttonStyle(.borderedProminent)
+                            Button {
+                                ARManager.shared.actionStream.send(.removeAllAnchors)
+                            } label: {
+                                Text("Remove All")
+                            }
+                            .buttonStyle(.bordered)
+                            .foregroundStyle(.red)
                         }
-                        .buttonStyle(.borderedProminent)
                     })
                 , alignment: .bottom
             )
