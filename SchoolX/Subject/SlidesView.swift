@@ -25,7 +25,7 @@ struct SlidesView: View {
         .environmentObject(vm)
         .overlay(alignment: .topLeading) {
             Button(action: {
-                appNavigation.path.popLast()
+                _ = appNavigation.path.popLast()
             }, label: {
                 Image(systemName: "xmark")
                     .foregroundStyle(Color.accentColor)
@@ -38,6 +38,15 @@ struct SlidesView: View {
                     .cornerRadius(40)
                     .padding()
             })
+        }
+        .overlay(alignment: .topTrailing) {
+            Button {
+                appNavigation.path.append(.ar)
+            } label: {
+                Text("View In AR")
+                Image(systemName: "shippingbox")
+            }
+            .buttonStyle(.bordered)
         }
     }
     

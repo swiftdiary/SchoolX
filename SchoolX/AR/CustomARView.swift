@@ -65,11 +65,11 @@ class CustomARView: ARView {
     }
     
     func placeBlock(ofColor color: Color) {
-        let block = MeshResource.generateBox(size: 1)
+        let block = MeshResource.generateSphere(radius: 0.3)
         let material = SimpleMaterial(color: UIColor(color), isMetallic: false)
         let entity = ModelEntity(mesh: block, materials: [material])
         
-        let anchor = AnchorEntity(.world(transform: .init(.zero)))
+        let anchor = AnchorEntity(plane: .horizontal)
         
         anchor.addChild(entity)
         

@@ -12,8 +12,17 @@ struct ARScreen: View {
         CustomARViewRepresentable()
             .ignoresSafeArea()
             .overlay(
-                Text("Hello")
-                    .background(Color.white)
+                RoundedRectangle(cornerRadius: 25.0)
+                    .fill(.white)
+                    .frame(height: 100)
+                    .overlay(content: {
+                        Button {
+                            ARManager.shared.actionStream.send(.placeBlock(color: .blue))
+                        } label: {
+                            Text("Add Earth")
+                        }
+                        .buttonStyle(.borderedProminent)
+                    })
                 , alignment: .bottom
             )
     }

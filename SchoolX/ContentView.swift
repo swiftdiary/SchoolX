@@ -73,6 +73,9 @@ struct ContentView: View {
                 case .slide_views(let topic):
                     SlidesView(topicSlides: topic.slides?.compactMap { $0 } ?? [])
                         .environmentObject(appNavigation)
+                case .ar:
+                    ARScreen()
+                        .environmentObject(appNavigation)
                 }
             }
         }

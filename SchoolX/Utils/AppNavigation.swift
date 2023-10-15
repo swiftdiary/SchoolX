@@ -15,6 +15,7 @@ enum AppNavigationPath: Hashable {
     case subject_topics(SubjectType)
     case subject_topics_detail(Topic)
     case slide_views(Topic)
+    case ar
 }
 
 enum AppNavigationTab: Hashable {
