@@ -10,12 +10,34 @@ import SwiftUI
 struct SlidesView: View {
     let topicSlides: [Slide]
     @State private var sheetUp: Bool = false
+    @StateObject var vm: SlidesViewModel = SlidesViewModel()
+    @EnvironmentObject var appNavigation: AppNavigation
     
     var body: some View {
         ZStack {
             ForEach(topicSlides, id: \.hashValue) { i in
-                EachSlideView(slide: i, sheetUp: sheetUp)
+                if vm.getIndexFromValue(value: i, slides: topicSlides) == vm.currentIndex {
+                    EachSlideView(slide: i, slides: topicSlides, sheetUp: sheetUp)
+                        .transition(.slide)
+                }
             }
+        }
+        .environmentObject(vm)
+        .overlay(alignment: .topLeading) {
+            Button(action: {
+                appNavigation.path.popLast()
+            }, label: {
+                Image(systemName: "xmark")
+                    .foregroundStyle(Color.accentColor)
+                    .font(.title3)
+                    .bold()
+                    .padding(5)
+                    .background(
+                        Color(UIColor.systemBackground)
+                    )
+                    .cornerRadius(40)
+                    .padding()
+            })
         }
     }
     
@@ -27,26 +49,30 @@ struct SlidesView: View {
 
 struct EachSlideView: View {
     var slide: Slide
+    var slides: [Slide]
     @State var sheetUp: Bool
     @State private var offsetY: CGFloat = 0
     @State private var currentY: CGFloat = 0
+    @EnvironmentObject var vm: SlidesViewModel
     
     
     var body: some View {
         ZStack {
-            SlideImageView(url: slide.imageUrl, key: slide.title)
+//            SlideImageView(url: slide.imageUrl, key: slide.title)
+//                .ignoresSafeArea()
+//                .blur(radius: 10)
+            Color.black
                 .ignoresSafeArea()
-                .opacity(0.7)
-                .blur(radius: 10)
             
             VStack {
                 SlideImageView(url:slide.imageUrl, key: slide.title)
-                    .frame(width: 350, height: 200)
-                    .cornerRadius(15)
+                    .frame(height: 250)
+//                    .cornerRadius(15)
                     .offset(y: sheetUp ? 210 : 0)
                 RoundedRectangle(cornerRadius: 35)
                     .frame(maxWidth: .infinity)
-                    .ignoresSafeArea(edges: .bottom)
+//                    .frame(height: 600)
+                    .ignoresSafeArea()
                     .foregroundStyle(Color(UIColor.systemBackground))
                     .overlay(content: {
                         VStack {
@@ -55,7 +81,9 @@ struct EachSlideView: View {
                                 .padding(.top)
                             HStack {
                                 Button(action: {
-                                    
+                                    if vm.currentIndex != 0 {
+                                        vm.currentIndex -= 1
+                                    }
                                 }, label: {
                                     RoundedRectangle(cornerRadius: 20)
                                         .frame(width: 100, height: 70)
@@ -66,11 +94,18 @@ struct EachSlideView: View {
                                                 .font(.title.bold())
                                         }
                                 })
+                                Spacer()
+                                
+                                Text("\(vm.currentIndex+1)/\(slides.count)")
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
                                 
                                 Spacer()
                                 
                                 Button(action: {
-                                    
+                                    if vm.currentIndex != slides.count - 1 {
+                                        vm.currentIndex += 1
+                                    }
                                 }, label: {
                                     RoundedRectangle(cornerRadius: 20)
                                         .frame(width: 100, height: 70)
@@ -84,23 +119,27 @@ struct EachSlideView: View {
                             }
                             .padding(.horizontal)
                             
-                            Text(slide.description)
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .padding()
-                                .background(
-                                    Color.accentColor.opacity(0.3)
-                                )
-                                .cornerRadius(20)
-                                .padding()
+                            ScrollView {
+                                Text(slide.description)
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                    .padding()
+                                    .background(
+                                        Color.accentColor.opacity(0.3)
+                                    )
+                                    .cornerRadius(20)
+                                    .padding()
                                 .padding(.vertical)
+                            }
+                            .onTapGesture { }
+                            .frame(maxHeight: .infinity)
                             
                             
                             Spacer()
                         }
                         .fontDesign(.rounded)
                     })
-                    .offset(y: sheetUp ? 420 : 0)
+                    .offset(y: sheetUp ? 360 : 0)
                     .offset(y: offsetY)
                     .gesture(
                         DragGesture()
@@ -133,12 +172,15 @@ struct EachSlideView: View {
                     )
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
 
 #Preview {
-    SlidesView(topicSlides: [Slide(imageUrl: "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2dyYW1taW5nfGVufDB8fDB8fHww&w=1000&q=80", title: "Earth", description: "Earth is 4th plane in solar system")])
+    
+        SlidesView(topicSlides: [Slide(imageUrl: "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2dyYW1taW5nfGVufDB8fDB8fHww&w=1000&q=80", title: "Earth", description: "Earth is 4th plane in solar system")])
+    
 }
 
 
