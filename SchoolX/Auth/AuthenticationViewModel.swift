@@ -61,13 +61,9 @@ final class AuthenticationViewModel: ObservableObject {
             }
             return user
         }
-//        let user = try await UserManager.shared.getUser(userId: authDataResult.uid)
-//        try await UserManager.shared.createNewUser(user: user)
-//        return user
     }
 
     func signOut() throws {
         try AuthenticationManager.shared.signOut()
     }
-    
 }
