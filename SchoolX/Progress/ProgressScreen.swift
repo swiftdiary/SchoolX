@@ -11,7 +11,7 @@ struct ProgressScreen: View {
     @Namespace var namespace
     @StateObject private var viewModel = ProgressViewModel()
     @State private var selectedDay: Int = Date().getWeekDay() - 1
-    @State private var completeFloat: CGFloat = 0
+    @State private var completeFloat: CGFloat = 0.01
     let weekSymbols: [String] = ["S", "M", "T", "W", "T", "F", "S"]
     let weekDates: [Date] = Date().getWeekDates()
     
@@ -38,8 +38,10 @@ struct ProgressScreen: View {
                 let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
                 viewModel.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
                 if let user = viewModel.user, let progress = user.progress {
-                    guard let beginDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 1, of: Date.now) else { return }
-                    let endDate = beginDate.addingTimeInterval(86400)
+                    guard let beginDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 1, of: Date.now.getWeekDay() == selectedDay ? Date.now : Date.now.addingTimeInterval(
+                        TimeInterval((60*60*24) * ((Date.now.getWeekDay()-1) - selectedDay))
+                    )) else { return }
+                    let endDate = beginDate.addingTimeInterval(60*60*24)
                     withAnimation(.bouncy) {
                         viewModel.getHistory(history: progress.milestone.history, dateRange: beginDate..<endDate)
                     }
@@ -48,6 +50,17 @@ struct ProgressScreen: View {
                 print(error)
             }
         }
+        .onChange(of: selectedDay, { oldValue, newValue in
+            if let user = viewModel.user, let progress = user.progress {
+                guard let beginDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 1, of: Date.now.getWeekDay() == newValue ? Date.now : Date.now.addingTimeInterval(
+                    TimeInterval((60*60*24) * ((Date.now.getWeekDay()-1) - newValue))
+                )) else { return }
+                let endDate = beginDate.addingTimeInterval(60*60*24)
+                withAnimation(.bouncy) {
+                    viewModel.getHistory(history: progress.milestone.history, dateRange: beginDate..<endDate)
+                }
+            }
+        })
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation(.bouncy) {
@@ -143,7 +156,6 @@ struct ProgressScreen: View {
                     }
             }
         }
-        .padding()
     }
     
     @ViewBuilder
