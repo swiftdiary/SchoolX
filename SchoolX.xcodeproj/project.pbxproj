@@ -49,6 +49,8 @@
 		D52CB4D82ADAEFC5005BE113 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB4D72ADAEFC5005BE113 /* ImageCacher.swift */; };
 		D52CB4DA2ADAF012005BE113 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB4D92ADAF012005BE113 /* CacheManager.swift */; };
 		D54AF4622ADB24E9005FBB34 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54AF4612ADB24E9005FBB34 /* Font+.swift */; };
+		D5DD90EE2ADBA5AA0013D419 /* SlidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DD90ED2ADBA5AA0013D419 /* SlidesView.swift */; };
+		D5DD90F02ADBB4130013D419 /* SlidesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DD90EF2ADBB4130013D419 /* SlidesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		D52CB4D72ADAEFC5005BE113 /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
 		D52CB4D92ADAF012005BE113 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		D54AF4612ADB24E9005FBB34 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		D5DD90ED2ADBA5AA0013D419 /* SlidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidesView.swift; sourceTree = "<group>"; };
+		D5DD90EF2ADBB4130013D419 /* SlidesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +235,8 @@
 				CAC9B24E2ADA78E60095DCA9 /* SubjectScreen.swift */,
 				CA905EFB2ADAB1E500A285AA /* TopicScreen.swift */,
 				CA905EFF2ADAB5F600A285AA /* TopicDetailScreen.swift */,
+				D5DD90ED2ADBA5AA0013D419 /* SlidesView.swift */,
+				D5DD90EF2ADBB4130013D419 /* SlidesViewModel.swift */,
 				CA905EF52ADA9F5F00A285AA /* Subject.swift */,
 				CA905EF72ADAA96700A285AA /* SubjectViewModel.swift */,
 				CA905EFD2ADAB47800A285AA /* TopicViewModel.swift */,
@@ -337,11 +343,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D52CB4DA2ADAF012005BE113 /* CacheManager.swift in Sources */,
+				D5DD90F02ADBB4130013D419 /* SlidesViewModel.swift in Sources */,
 				CAC339B02AD9613600218943 /* SignInGoogleHelper.swift in Sources */,
 				CA905EFE2ADAB47800A285AA /* TopicViewModel.swift in Sources */,
 				D52CB4D82ADAEFC5005BE113 /* ImageCacher.swift in Sources */,
 				CAC339842AD946A400218943 /* ContentView.swift in Sources */,
 				CAC339C92AD97F7A00218943 /* HomeScreen.swift in Sources */,
+				D5DD90EE2ADBA5AA0013D419 /* SlidesView.swift in Sources */,
 				CAC339822AD946A400218943 /* SchoolXApp.swift in Sources */,
 				CAC339C42AD97C4E00218943 /* AppNavigation.swift in Sources */,
 				CAC339A72AD95E5300218943 /* SignInAppleHelper.swift in Sources */,

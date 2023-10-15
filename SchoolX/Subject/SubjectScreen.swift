@@ -13,7 +13,7 @@ struct SubjectScreen: View {
     var body: some View {
         List {
             ForEach(SubjectType.allCases) { c in
-                ExtractedView(c: c, url: c.imageUrl, key: c.id)
+                ExtractedView(c: c, url: c.imageUrl, key: c.rawValue)
             }
         }
         .listStyle(.plain)

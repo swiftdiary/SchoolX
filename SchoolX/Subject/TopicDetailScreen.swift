@@ -10,10 +10,27 @@ import SwiftUI
 struct TopicDetailScreen: View {
     let topic: Topic
     let readPage: Int = 3
+    @EnvironmentObject private var appNavigation: AppNavigation
     
     var body: some View {
         VStack {
-            SlidesView(topic: topic, url: topic.imageUrl ?? "", key: topic.topicId)
+            TopicImageView2(topic: topic, url: topic.imageUrl ?? "", key: topic.topicId)
+                .overlay(alignment: .topLeading) {
+                    Button(action: {
+                        appNavigation.path.popLast()
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(Color.accentColor)
+                            .font(.title)
+                            .bold()
+                            .padding(10)
+                            .background(
+                                Color(UIColor.systemBackground)
+                            )
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                    })
+                }
             ScrollView {
                 VStack {
                     Text(topic.name.capitalized)
@@ -44,16 +61,27 @@ struct TopicDetailScreen: View {
                     }
                     .padding(.horizontal)
                     Text(topic.description)
+                        .font(.callout)
+                        .multilineTextAlignment(.leading)
+                        .padding()
+                        .padding(.horizontal)
+                        .background(
+                            Color.accentColor.opacity(0.2)
+                        )
+                        .cornerRadius(10)
+                        .padding()
+                    
                     
                 }
             }
-            .padding(.top, -90)
+            .padding(.top, -50)
         }
+        .navigationBarBackButtonHidden()
         
     }
     
     func percentageOf() -> Int {
-        return (100 * readPage) / ([5,6,7, 8] ).count
+        return (100 * readPage) / ((topic.slides)?.count ?? 1)
     }
     
     func percentageFrom() -> CGFloat {
@@ -63,11 +91,11 @@ struct TopicDetailScreen: View {
 
 #Preview {
     NavigationStack {
-        TopicDetailScreen(topic: Topic(topicId: "123", name: "solar system", description: "dsf", imageUrl: "https://img.freepik.com/premium-photo/science-background-design_974729-4517.jpg"))
+        TopicDetailScreen(topic: Topic(topicId: "123", name: "solar system", description: "dsfsadakhdsjakhdkjshda sdhaskhd kjahd kjahs dkjhak dhasj dhaskj dhaskh", imageUrl: "https://img.freepik.com/premium-photo/science-background-design_974729-4517.jpg"))
     }
 }
 
-struct SlidesView: View {
+struct TopicImageView2: View {
     let topic: Topic
     @StateObject private var imageCacher: ImageCacher
     

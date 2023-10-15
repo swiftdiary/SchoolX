@@ -27,8 +27,10 @@ class ImageCacher: ObservableObject {
     
     func getImage() {
         if let savedImage = cacheManagerPhoto.getImage(key: imageKey) {
+            print("Getting image from cache")
             image = savedImage
         } else {
+            print("downloading")
             downloadImage()
         }
     }
