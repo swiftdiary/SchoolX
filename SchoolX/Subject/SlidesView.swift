@@ -10,12 +10,33 @@ import SwiftUI
 struct SlidesView: View {
     let topicSlides: [Slide]
     @State private var sheetUp: Bool = false
+    @StateObject var vm: SlidesViewModel = SlidesViewModel()
+    @EnvironmentObject var appNavigation: AppNavigation
     
     var body: some View {
         ZStack {
             ForEach(topicSlides, id: \.hashValue) { i in
-                EachSlideView(slide: i, sheetUp: sheetUp)
+                if vm.getIndexFromValue(value: i, slides: topicSlides) == vm.currentIndex {
+                    EachSlideView(slide: i, slides: topicSlides, sheetUp: sheetUp)
+                }
             }
+        }
+        .environmentObject(vm)
+        .overlay(alignment: .topLeading) {
+            Button(action: {
+                appNavigation.path.popLast()
+            }, label: {
+                Image(systemName: "chevron.left")
+                    .foregroundStyle(Color.accentColor)
+                    .font(.title)
+                    .bold()
+                    .padding(10)
+                    .background(
+                        Color(UIColor.systemBackground)
+                    )
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+            })
         }
     }
     
@@ -27,9 +48,11 @@ struct SlidesView: View {
 
 struct EachSlideView: View {
     var slide: Slide
+    var slides: [Slide]
     @State var sheetUp: Bool
     @State private var offsetY: CGFloat = 0
     @State private var currentY: CGFloat = 0
+    @EnvironmentObject var vm: SlidesViewModel
     
     
     var body: some View {
@@ -41,12 +64,14 @@ struct EachSlideView: View {
             
             VStack {
                 SlideImageView(url:slide.imageUrl, key: slide.title)
-                    .frame(width: 350, height: 200)
+                    .frame(height: 250)
                     .cornerRadius(15)
                     .offset(y: sheetUp ? 210 : 0)
+                    .ignoresSafeArea()
                 RoundedRectangle(cornerRadius: 35)
                     .frame(maxWidth: .infinity)
-                    .ignoresSafeArea(edges: .bottom)
+//                    .frame(height: 600)
+                    .ignoresSafeArea()
                     .foregroundStyle(Color(UIColor.systemBackground))
                     .overlay(content: {
                         VStack {
@@ -55,7 +80,9 @@ struct EachSlideView: View {
                                 .padding(.top)
                             HStack {
                                 Button(action: {
-                                    
+                                    if vm.currentIndex != 0 {
+                                        vm.currentIndex -= 1
+                                    }
                                 }, label: {
                                     RoundedRectangle(cornerRadius: 20)
                                         .frame(width: 100, height: 70)
@@ -70,7 +97,9 @@ struct EachSlideView: View {
                                 Spacer()
                                 
                                 Button(action: {
-                                    
+                                    if vm.currentIndex != slides.count - 1 {
+                                        vm.currentIndex += 1
+                                    }
                                 }, label: {
                                     RoundedRectangle(cornerRadius: 20)
                                         .frame(width: 100, height: 70)
@@ -133,12 +162,15 @@ struct EachSlideView: View {
                     )
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
 
 #Preview {
-    SlidesView(topicSlides: [Slide(imageUrl: "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2dyYW1taW5nfGVufDB8fDB8fHww&w=1000&q=80", title: "Earth", description: "Earth is 4th plane in solar system")])
+    
+        SlidesView(topicSlides: [Slide(imageUrl: "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2dyYW1taW5nfGVufDB8fDB8fHww&w=1000&q=80", title: "Earth", description: "Earth is 4th plane in solar system")])
+    
 }
 
 
