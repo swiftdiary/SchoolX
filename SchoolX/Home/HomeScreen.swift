@@ -80,8 +80,8 @@ struct HomeScreen: View {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(.accent.gradient)
                 .overlay {
-                    Text("💻")
-                        .font(.largeTitle)
+                    SlideImageView(url: topic.imageUrl ?? "", key: topic.topicId)
+                        .cornerRadius(10)
                 }
                 .padding()
         )
