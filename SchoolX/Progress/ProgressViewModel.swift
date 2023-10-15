@@ -8,10 +8,26 @@
 import Foundation
 
 final class ProgressViewModel: ObservableObject {
-    @Published var feedItems: [Milestone.History] = []
+    @Published var historyItems: [Milestone.History] = []
+    @Published var user: UserModel?
     
-    func getFeed(history: [Milestone.History], dateRange: Range<Date>) {
-        feedItems = history.filter({ dateRange.contains($0.date) })
+    func getHistory(history: [Milestone.History], dateRange: Range<Date>) {
+        historyItems = history.filter({ dateRange.contains($0.date) })
     }
     
+    func getUserDailyProgressCount() -> Int {
+        return user?.progress?.milestone.estimatedCount ?? 1
+    }
+    
+    func getUserOpenedDate(from historyItem: Milestone.History) -> String {
+        return historyItem.date.format("MM/dd/YYYY hh:mm:ss")
+    }
+    
+    func getUserSpentTime(from historyItem: Milestone.History) -> Int {
+        return historyItem.spentTime
+    }
+    
+    func getUserOpenedTimes() -> Int {
+        return historyItems.count
+    }
 }

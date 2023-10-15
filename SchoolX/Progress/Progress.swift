@@ -26,17 +26,15 @@ struct Milestone: Codable {
         case estimatedCount = "estimated_count"
     }
     
-    struct History: Codable, Identifiable {
+    struct History: Codable, Identifiable, Equatable {
         var id: UUID { UUID() }
         let date: Date
-        let topics: [String] // TopicId 5a0qMdLdzCzVMU2Fix6U
-        var openCount: Int
+        let topics: [String]
         var spentTime: Int
         
         enum CodingKeys: String, CodingKey {
             case date = "date"
             case topics = "topics"
-            case openCount = "open_count"
             case spentTime = "spent_time"
         }
     }

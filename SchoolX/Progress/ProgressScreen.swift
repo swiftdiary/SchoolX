@@ -10,17 +10,19 @@ import SwiftUI
 struct ProgressScreen: View {
     @Namespace var namespace
     @StateObject private var viewModel = ProgressViewModel()
-    @State private var user: UserModel?
     @State private var selectedDay: Int = Date().getWeekDay() - 1
+    @State private var completeFloat: CGFloat = 0
     let weekSymbols: [String] = ["S", "M", "T", "W", "T", "F", "S"]
     let weekDates: [Date] = Date().getWeekDates()
     
     var body: some View {
         VStack {
-            if let user {
+            if viewModel.user != nil {
                 WeekDaysView()
                 Divider()
                 FeedView()
+                Divider()
+                HistoryView()
             } else {
                 VStack {
                     LottieView(name: "loading_hamster")
@@ -34,29 +36,97 @@ struct ProgressScreen: View {
         .task(priority: .high) {
             do {
                 let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
-                user = try await UserManager.shared.getUser(userId: authDataResult.uid)
-                if let user, let progress = user.progress {
+                viewModel.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+                if let user = viewModel.user, let progress = user.progress {
                     guard let beginDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 1, of: Date.now) else { return }
                     let endDate = beginDate.addingTimeInterval(86400)
-                    print(beginDate..<endDate)
                     withAnimation(.bouncy) {
-                        viewModel.getFeed(history: progress.milestone.history, dateRange: beginDate..<endDate)
+                        viewModel.getHistory(history: progress.milestone.history, dateRange: beginDate..<endDate)
                     }
                 }
             } catch {
                 print(error)
             }
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                withAnimation(.bouncy) {
+                    let divResult = CGFloat(Float(viewModel.getUserOpenedTimes()) / Float(viewModel.getUserDailyProgressCount()))
+                    completeFloat = divResult > 1 ? 1 : divResult
+                    print(completeFloat)
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func HistoryView() -> some View {
+        List(viewModel.historyItems) { item in
+            HStack {
+                VStack {
+                    RoundedRectangle(cornerRadius: 8.0)
+                        .fill(.accent.gradient)
+                        .frame(width: 8)
+                }
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Last activity:")
+                            .font(.headline)
+                            .foregroundStyle(.accent)
+                        Text(viewModel.getUserOpenedDate(from: item))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    HStack {
+                        Text("Time spent:")
+                            .font(.headline)
+                        Text("\(viewModel.getUserSpentTime(from: item))")
+                            .font(.subheadline)
+                    }
+                }
+            }
+            .listRowSeparator(.hidden)
+        }
+        .listStyle(.inset)
     }
     
     @ViewBuilder
     func FeedView() -> some View {
         HStack {
-            Text("\(viewModel.feedItems.count)")
-            ForEach(viewModel.feedItems) { item in
-                Text("\(item.spentTime)")
+            VStack {
+                HStack {
+                    Text("Your daily goal")
+                        .font(.title.bold())
+                    Spacer()
+                    Text("\(viewModel.getUserDailyProgressCount())")
+                        .font(.title.bold())
+                        .foregroundStyle(.accent)
+                }
+                .padding()
+                GeometryReader { proxy in
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack {
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .fill(.accent)
+                                .frame(width: proxy.size.width*completeFloat, height: 10)
+                                .transition(.move(edge: .leading))
+                        }
+                        HStack {
+                            Text("\(String(format: "%.0f", completeFloat*100))% complete")
+                                .font(.headline.bold())
+                                .foregroundStyle(.accent)
+                        }
+                    }
+                }
             }
         }
+        .frame(height: 150)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 25.0)
+                .fill(.ultraThickMaterial)
+                .padding(5)
+        )
     }
     
     // MARK: Week Days
@@ -73,6 +143,7 @@ struct ProgressScreen: View {
                     }
             }
         }
+        .padding()
     }
     
     @ViewBuilder
