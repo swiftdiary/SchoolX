@@ -96,7 +96,7 @@ struct TopicDetailScreen: View {
     }
     
     func percentageOf() -> Int {
-        return (100 * readPage) / ((topic.slides)?.count ?? 1)
+        return (100 * readPage) / (((topic.slides)?.count == 0 ? 1 : (topic.slides)?.count) ?? 1)
     }
     
     func percentageFrom() -> CGFloat {
