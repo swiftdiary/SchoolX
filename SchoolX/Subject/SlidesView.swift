@@ -18,6 +18,7 @@ struct SlidesView: View {
             ForEach(topicSlides, id: \.hashValue) { i in
                 if vm.getIndexFromValue(value: i, slides: topicSlides) == vm.currentIndex {
                     EachSlideView(slide: i, slides: topicSlides, sheetUp: sheetUp)
+                        .transition(.slide)
                 }
             }
         }
@@ -26,16 +27,16 @@ struct SlidesView: View {
             Button(action: {
                 appNavigation.path.popLast()
             }, label: {
-                Image(systemName: "chevron.left")
+                Image(systemName: "xmark")
                     .foregroundStyle(Color.accentColor)
-                    .font(.title)
+                    .font(.title3)
                     .bold()
-                    .padding(10)
+                    .padding(5)
                     .background(
                         Color(UIColor.systemBackground)
                     )
-                    .cornerRadius(10)
-                    .padding(.horizontal)
+                    .cornerRadius(40)
+                    .padding()
             })
         }
     }
@@ -57,17 +58,17 @@ struct EachSlideView: View {
     
     var body: some View {
         ZStack {
-            SlideImageView(url: slide.imageUrl, key: slide.title)
+//            SlideImageView(url: slide.imageUrl, key: slide.title)
+//                .ignoresSafeArea()
+//                .blur(radius: 10)
+            Color.black
                 .ignoresSafeArea()
-                .opacity(0.7)
-                .blur(radius: 10)
             
             VStack {
                 SlideImageView(url:slide.imageUrl, key: slide.title)
                     .frame(height: 250)
-                    .cornerRadius(15)
+//                    .cornerRadius(15)
                     .offset(y: sheetUp ? 210 : 0)
-                    .ignoresSafeArea()
                 RoundedRectangle(cornerRadius: 35)
                     .frame(maxWidth: .infinity)
 //                    .frame(height: 600)
@@ -93,6 +94,11 @@ struct EachSlideView: View {
                                                 .font(.title.bold())
                                         }
                                 })
+                                Spacer()
+                                
+                                Text("\(vm.currentIndex+1)/\(slides.count)")
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
                                 
                                 Spacer()
                                 
@@ -113,23 +119,27 @@ struct EachSlideView: View {
                             }
                             .padding(.horizontal)
                             
-                            Text(slide.description)
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .padding()
-                                .background(
-                                    Color.accentColor.opacity(0.3)
-                                )
-                                .cornerRadius(20)
-                                .padding()
+                            ScrollView {
+                                Text(slide.description)
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                    .padding()
+                                    .background(
+                                        Color.accentColor.opacity(0.3)
+                                    )
+                                    .cornerRadius(20)
+                                    .padding()
                                 .padding(.vertical)
+                            }
+                            .onTapGesture { }
+                            .frame(maxHeight: .infinity)
                             
                             
                             Spacer()
                         }
                         .fontDesign(.rounded)
                     })
-                    .offset(y: sheetUp ? 420 : 0)
+                    .offset(y: sheetUp ? 360 : 0)
                     .offset(y: offsetY)
                     .gesture(
                         DragGesture()

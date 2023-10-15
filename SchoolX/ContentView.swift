@@ -72,9 +72,7 @@ struct ContentView: View {
                         .environmentObject(viewModel)
                 case .slide_views(let topic):
                     SlidesView(topicSlides: topic.slides?.compactMap { $0 } ?? [])
-                    
-                    
-                        
+                        .environmentObject(appNavigation)
                 }
             }
         }
