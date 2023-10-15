@@ -17,7 +17,7 @@ struct TopicDetailScreen: View {
             TopicImageView2(topic: topic, url: topic.imageUrl ?? "", key: topic.topicId)
                 .overlay(alignment: .topLeading) {
                     Button(action: {
-                        appNavigation.path.popLast()
+                        _ = appNavigation.path.popLast()
                     }, label: {
                         Image(systemName: "chevron.left")
                             .foregroundStyle(Color.accentColor)
