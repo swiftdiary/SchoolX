@@ -36,7 +36,7 @@ struct HomeScreen: View {
                         .font(.largeTitle.bold())
                     Spacer()
                 }
-                ForEach(0..<30) { idx in
+                ForEach(0..<10) { idx in
                     RoundedRectangle(cornerRadius: 10)
                         .fill(.accent.gradient.opacity(0.2))
                         .frame(height: 100)
