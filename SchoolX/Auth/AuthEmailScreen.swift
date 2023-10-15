@@ -146,7 +146,7 @@ struct AuthEmailScreen: View {
             
             Divider()
             
-            TextField("Password", text: $password)
+            SecureField("Password", text: $password)
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 20.0)
@@ -190,7 +190,7 @@ struct AuthEmailScreen: View {
             
             Divider()
             
-            TextField("Password", text: $password)
+            SecureField("Password", text: $password)
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 20.0)

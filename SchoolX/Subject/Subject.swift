@@ -10,7 +10,21 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 enum SubjectType: String, Identifiable, Codable {
-    var id: UUID { UUID() }
+    var id: String { UUID().uuidString }
+    var imageUrl: String {
+        switch self {
+        case .astronomy:
+            return "https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        case .physics:
+            return "https://images.unsplash.com/photo-1635070041409-e63e783ce3c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2758&q=80"
+        case .chemistry:
+            return "https://img.freepik.com/premium-photo/science-background-design_974729-4517.jpg"
+        case .biology:
+            return "https://i.pinimg.com/originals/6d/1c/aa/6d1caafa036d5f3db0ba6e8c52176b29.jpg"
+        case .it:
+            return "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2dyYW1taW5nfGVufDB8fDB8fHww&w=1000&q=80"
+        }
+    }
     
     case astronomy
     case physics
