@@ -15,35 +15,6 @@ struct ProfileScreen: View {
     var body: some View {
         List {
             Section("Settings") {
-                HStack {
-                    Image(systemName: "circle.lefthalf.filled.righthalf.striped.horizontal.inverse")
-                        .foregroundStyle(.accent)
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("Appearance")
-                    })
-                }
-                HStack {
-                    Image(systemName: "bell.badge.fill")
-                        .foregroundStyle(.accent)
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("Notifications and Sounds")
-                    })
-                }
-                HStack {
-                    Image(systemName: "hand.raised.fill")
-                        .foregroundStyle(.accent)
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("Privacy and Security")
-                    })
-                }
-            }
-            Section("Profile") {
                 Button(action: {
                     withAnimation(.bouncy) {
                         appNavigation.path.append(.profile_editName)
