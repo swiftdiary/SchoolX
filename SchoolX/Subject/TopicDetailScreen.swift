@@ -44,22 +44,27 @@ struct TopicDetailScreen: View {
                             .overlay {
                                 Text("\((topic.slides ?? []).count)  pages")
                                     .font(.headline)
+                                    .onAppear {
+                                        print(percentageOf())
+                                    }
                             }
-                        Spacer(minLength: 0)
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("\(percentageOf()) %")
-                                    .font(.headline)
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(maxWidth: 210)
-                                    .frame(width: percentageFrom())
-                                    .foregroundStyle(Color.accentColor)
+//                        Spacer(minLength: 0)
+                        if (topic.slides ?? []).count != 0 {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("\(percentageOf()) %")
+                                        .font(.headline)
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(maxWidth: 210)
+                                        .frame(width: percentageFrom())
+                                        .foregroundStyle(Color.accentColor)
+                                }
+                                Spacer(minLength: 0)
                             }
-                            Spacer(minLength: 0)
+                            .padding(.leading, 10)
                         }
-                        .padding(.leading, 10)
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 10)
                     Text(topic.description)
                         .font(.callout)
                         .multilineTextAlignment(.leading)
